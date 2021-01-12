@@ -18,14 +18,21 @@ const cameraView = document.querySelector("#camera--view"),
 
 // acl.start();
 function handleOrientation(event) {
-    var absolute = event.accelerations;
-    var alpha    = event.alpha;
+    var absolute = event.acceleration;
+    var alpha = event.alpha;
+
     var beta     = event.beta;
     var gamma    = event.gamma;
-    console.log("heyyy in orientation"+absolute+" "+alpha+" "+beta+" "+gamma)
+    var output_str = "orientation "+absolute+" "+alpha+" "+beta+" "+gamma;
+    cameraOutput.innerHTML=output_str;
+    // console.log("heyyy in orientation"+absolute+" "+alpha+" "+beta+" "+gamma)
     // Do stuff with the new orientation data
 }
-window.addEventListener("devicemotion", handleOrientation, true);
+
+
+function handleOrientation2(event) {
+    // console.log("the orientation of the device is now " + event.target.screen.orientation.angle);
+  }
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -39,6 +46,8 @@ function cameraStart() {
         console.error("Oops. Something is broken.", error);
     });
 }
+
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
     console.log("im here in button")
@@ -82,4 +91,11 @@ cameraTrigger.onclick = function() {
 };
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
+// window.addEventListener("deviceoriention", handleOrientation, true);
+window.addEventListener('deviceorientation', function(event) {
+    console.log(event.alpha + ' : ' + event.beta + ' : ' + event.gamma);
+  });
+
+// window.addEventListener("orientationchange", );
 window.addEventListener("load", handleOrientation, true);
+window.addEventListener("load", handleOrientation2, true);
