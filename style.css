@@ -10,7 +10,7 @@ html, body{
     width: 100%;
     object-fit: cover;
 }
-#camera--view, #camera--sensor{
+#camera--view, #camera--sensor, #camera--output{
     transform: scaleX(-1);
     filter: FlipH;
 }
