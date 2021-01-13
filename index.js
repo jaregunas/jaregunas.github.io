@@ -44,7 +44,7 @@ function myLoop(){
         console.log("count"+i)
         // Creating a XHR object 
         let xhr = new XMLHttpRequest(); 
-        let url = "http://localhost:5000/index"; 
+        let url = "http://ch-jgunas-mbp.local:5000/index"; 
         // open a connection 
         xhr.open("POST", url, true); 
         // Set the request header i.e. which type of content you are sending 
