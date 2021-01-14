@@ -6,25 +6,25 @@
     </title> 
   </head> 
   
-  <body style="text-align:center;" id="body"> 
+  <body style="text-align:center;" id="body" onload="go();"> 
+    <!-- Sensor Status -->
+    <div id="status">is supported.</div>
+    <br/><br/>
+    <div id="Alpha"></div>
+    <br/><br/>
+    <div id="Beta"></div>
+    <br/><br/>
+    <div id="Gama"></div>
+    <canvas id="myCanvas" width="400" height="=400"></canvas>
     
-  
+    <!-- Camera Frame Prediction -->
     <p> 
-        <!-- Making a text input -->
-        <!-- <input type="text" id="name" placeholder="Your name">  -->
-        <!-- <img id=imageid src="sample8.jpg" style="scale: 0.01"> -->
-        <!-- Camera sensor -->
-        <canvas id="camera--sensor"></canvas>
-        <!-- Camera view -->
-        <video id="camera--view" autoplay playsinline></video>
-        <!-- Camera output -->
-        <!-- <img src="//:0" alt="" id="camera--output"> -->
-        <!-- Button to send data -->
-        <!-- <button onclick="sendJSON()">Send JSON</button>  -->
-  
+      <!-- Camera sensor -->
+      <canvas id="camera--sensor"></canvas>
+      <!-- Camera view -->
+      <video id="camera--view" autoplay playsinline></video>
       <!-- For printing result from server -->
       <p class="result" style="color:green"></p> 
-      
    </p> 
   
   <!-- Include the JavaScript file -->
