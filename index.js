@@ -19,17 +19,48 @@ function cameraStart() {
     });
 }
 
-function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-  }
-  
-// var base64 = getBase64Image(document.getElementById("imageid"));
+function orientation(event){
+    gamavalue = event.gama
+    if(event.gamma < -45.0 && event.gamma > -90.0){
+        var canvas = document.getElementById("myCanvas")
+        var canvas_context = canvas.getContext("2d");
+        canvas_context.fillStyle = "green";
+        canvas_context.fill();
+    }
+    else if(event.gamma > -45.0 || event.gamma < -90.0){
+        var canvas = document.getElementById("myCanvas")
+        var canvas_context = canvas.getContext("2d");
+        canvas_context.fillStyle = "red";
+        canvas_context.fill();
+    }
+    document.getElementById("Gama").innerHTML = "Magnetometer: "
+    + event.gamma;
+}
+    
+function go(){
+    if(window.DeviceOrientationEvent){
+        window.addEventListener("deviceorientation", orientation, true);
+        var canvas = document.getElementById("myCanvas")
+        if(canvas.getContext){
+            console.log("All clear");
+            var canvas_context = canvas.getContext("2d");
+            var start_degree = 0 ;
+            var start_angle = (Math.PI/180) * start_degree;
+            var end_degree = 360 ;
+            var end_angle = (Math.PI/180) * end_degree;
+            canvas_context.beginPath();
+            canvas_context.arc(150,150,100,start_angle,end_angle,true);
+            canvas_context.fillStyle = "blue";
+            canvas_context.fill();
+        }
+    }
+    else{
+        var status = document.getElementById("status");
+        status.innerHTML = status.innerHTML.replace(
+        "is supported", "is not supported"
+        );
+    }
+}
 
 // function sendJSON(){ 
 let result = document.querySelector('.result'); 
@@ -55,6 +86,12 @@ function myLoop(){
         // var ctx = canvas.getContext("2d");
         // ctx.drawImage(cameraView, 0, 0);
         // var dataURL = canvas.toDataURL("image/png");
+        // Request request = new Request.Builder()
+        // .url("https://vpdwiepwke.execute-api.us-east-1.amazonaws.com/exp_analyzer/predict")
+        // .addHeader("x-api-key", "mww4JDyy4d9FCtxHAOD392Zbs71ggWv41gHpmGTj")
+        // .post(body)
+        // .build();
+        // iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAgAElEQVR4X
         cameraSensor.width = cameraView.videoWidth;
         cameraSensor.height = cameraView.videoHeight;
         cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
@@ -79,10 +116,10 @@ function myLoop(){
         var data = JSON.stringify({ "image": base64}); 
         // Sending data with the request 
         xhr.send(data); 
-        if (i<5){
+        if (i<10){
             myLoop();
         }
-    }, 3000)
+    }, 1500)
     
 }
             
