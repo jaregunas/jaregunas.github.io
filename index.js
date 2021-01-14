@@ -75,10 +75,14 @@ function myLoop(){
         console.log("count"+i)
         // Creating a XHR object 
         let xhr = new XMLHttpRequest(); 
-        let url = "http://ch-jgunas-mbp.local:5000/index"; 
+        xhr.withCredentials = true;
+        // let url = "http://ch-jgunas-mbp.local:5000/index"; 
+        let url = "https://vpdwiepwke.execute-api.us-east-1.amazonaws.com/exp_analyzer/predict";
+
         // open a connection 
         xhr.open("POST", url, true); 
         // Set the request header i.e. which type of content you are sending 
+        xhr.setRequestHeader("x-api-key", "mww4JDyy4d9FCtxHAOD392Zbs71ggWv41gHpmGTj")
         xhr.setRequestHeader("Content-Type", "application/json"); 
         // var canvas = document.createElement("canvas");
         // canvas.width = cameraView.width;
