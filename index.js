@@ -1,7 +1,8 @@
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
-    cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor")
+
+// document.getElementById("#camera--sensor").style.visibility = "hidden";
 var front = false;
 // document.getElementById("#flip--button").onclick = function(){ front = !front; };
 var constraints = { video: { facingMode: (front? "user": "environment") }, audio: false };
@@ -24,17 +25,20 @@ function orientation(event){
     if(event.gamma < -45.0 && event.gamma > -90.0){
         var canvas = document.getElementById("myCanvas")
         var canvas_context = canvas.getContext("2d");
-        canvas_context.fillStyle = "green";
+        canvas_context.fillStyle = "rgb(111, 199, 28)";
         canvas_context.fill();
     }
     else if(event.gamma > -45.0 || event.gamma < -90.0){
         var canvas = document.getElementById("myCanvas")
         var canvas_context = canvas.getContext("2d");
-        canvas_context.fillStyle = "red";
+        canvas_context.fillStyle = "rgb(242, 69, 39)";
         canvas_context.fill();
     }
-    document.getElementById("Gama").innerHTML = "Magnetometer: "
-    + event.gamma;
+
+    canvas_context.font = "20px Arial";
+    canvas_context.fillText(gamavalue, 185, 65);
+    // document.getElementById("Gama").innerHTML = "Magnetometer: "
+    // + event.gamma;
 }
     
 function go(){
@@ -49,23 +53,15 @@ function go(){
             var end_degree = 360 ;
             var end_angle = (Math.PI/180) * end_degree;
             canvas_context.beginPath();
-            canvas_context.arc(150,150,100,start_angle,end_angle,true);
-            canvas_context.fillStyle = "blue";
+            canvas_context.arc(200,50,30,start_angle,end_angle,true);
+            canvas_context.fillStyle = "teal";
             canvas_context.fill();
+           
         }
     }
-    else{
-        var status = document.getElementById("status");
-        status.innerHTML = status.innerHTML.replace(
-        "is supported", "is not supported"
-        );
-    }
 }
-
 // function sendJSON(){ 
 let result = document.querySelector('.result'); 
-console.log("im here in button")
-
 // let name = document.querySelector('#name');    
 
 var i=0
@@ -75,7 +71,7 @@ function myLoop(){
         console.log("count"+i)
         // Creating a XHR object 
         let xhr = new XMLHttpRequest(); 
-        xhr.withCredentials = true;
+        // xhr.withCredentials = true;
         // let url = "http://ch-jgunas-mbp.local:5000/index"; 
         let url = "https://vpdwiepwke.execute-api.us-east-1.amazonaws.com/exp_analyzer/predict";
 
@@ -83,18 +79,7 @@ function myLoop(){
         xhr.open("POST", url, true); 
         // Set the request header i.e. which type of content you are sending 
         xhr.setRequestHeader("x-api-key", "mww4JDyy4d9FCtxHAOD392Zbs71ggWv41gHpmGTj")
-        xhr.setRequestHeader("Content-Type", "application/json"); 
-        // var canvas = document.createElement("canvas");
-        // canvas.width = cameraView.width;
-        // canvas.height = cameraView.height;
-        // var ctx = canvas.getContext("2d");
-        // ctx.drawImage(cameraView, 0, 0);
-        // var dataURL = canvas.toDataURL("image/png");
-        // Request request = new Request.Builder()
-        // .url("https://vpdwiepwke.execute-api.us-east-1.amazonaws.com/exp_analyzer/predict")
-        // .addHeader("x-api-key", "mww4JDyy4d9FCtxHAOD392Zbs71ggWv41gHpmGTj")
-        // .post(body)
-        // .build();
+        // xhr.setRequestHeader("Content-Type", "application/json"); 
         // iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAgAElEQVR4X
         cameraSensor.width = cameraView.videoWidth;
         cameraSensor.height = cameraView.videoHeight;
@@ -104,14 +89,15 @@ function myLoop(){
         var path = img.src
         // var dataURL = cameraSensor.toDataURL("image/png");
         var base64 = path.replace(/^data:image\/(png|jpg);base64,/, "");
-        result.innerHTML = base64;
+        // result.innerHTML = base64;
         // result.appendChild(img)
-        console.log(base64)
+        // console.log(base64)
         // Create a state change callback 
         xhr.onreadystatechange = function () { 
             if (xhr.readyState === 4 && xhr.status === 200) { 
                 // Print received data from server 
-                result.innerHTML = this.responseText + i; 
+                result.innerHTML = this.responseText; 
+                // result.innerHTML = predicted_json["result"];
                 console.log(this.responseText)
             } 
         }; 
@@ -120,14 +106,14 @@ function myLoop(){
         var data = JSON.stringify({ "image": base64}); 
         // Sending data with the request 
         xhr.send(data); 
-        if (i<10){
+        if (i<8){
             myLoop();
         }
-    }, 1500)
+    }, 1000)
     
 }
             
-myLoop();
+setTimeout(myLoop(), 2000);
 
 
 
