@@ -4,31 +4,31 @@
     <title> 
       JavaScript | Sending JSON data to server. 
     </title> 
+    <link rel="stylesheet" href="style.css">
   </head> 
   
   <body style="text-align:center;" id="body" onload="go();"> 
-    <!-- Sensor Status -->
-    <div id="status">is supported.</div>
-    <br/><br/>
-    <div id="Alpha"></div>
-    <br/><br/>
-    <div id="Beta"></div>
-    <br/><br/>
-    <div id="Gama"></div>
-    <canvas id="myCanvas" width="400" height="=400"></canvas>
-    
-    <!-- Camera Frame Prediction -->
-    <p> 
-      <!-- Camera sensor -->
-      <canvas id="camera--sensor"></canvas>
+    <div class="first">
+      <h1>Light Exposure Analyzer</h1><br>
+      <!-- Camera Frame Prediction -->
       <!-- Camera view -->
       <video id="camera--view" autoplay playsinline></video>
-      <!-- For printing result from server -->
-      <p class="result" style="color:green"></p> 
-   </p> 
-  
+      <!-- Camera sensor -->
+      <canvas id="camera--sensor"></canvas>
+    </div>
+    <!-- For printing result from server -->
+    <p class="result"></p> 
+
+    <!-- Sensor Status -->
+    <!-- <br/><br/>
+    <div id="Alpha"></div>
+    <br/><br/>
+    <div id="Beta"></div> -->
+    <br/><br/>
+    <div id="Gama"></div>
+    <canvas id="myCanvas" width="400"></canvas>
+
   <!-- Include the JavaScript file -->
   <script src="index.js"></script> 
-  
   </body> 
 </html> 
