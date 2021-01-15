@@ -35,10 +35,10 @@ function orientation(event){
         canvas_context.fill();
     }
 
-    canvas_context.font = "20px Arial";
-    canvas_context.fillText(gamavalue, 185, 65);
-    // document.getElementById("Gama").innerHTML = "Magnetometer: "
-    // + event.gamma;
+    // canvas_context.font = "20px Arial";
+    // canvas_context.fillText(gamavalue, 185, 65);
+    document.getElementById("Gama").innerHTML = "Orientation: "
+    + event.gamma;
 }
     
 function go(){
@@ -53,18 +53,19 @@ function go(){
             var end_degree = 360 ;
             var end_angle = (Math.PI/180) * end_degree;
             canvas_context.beginPath();
-            canvas_context.arc(200,50,30,start_angle,end_angle,true);
+            canvas_context.arc(250,30,30,start_angle,end_angle,true);
+            
             canvas_context.fillStyle = "teal";
             canvas_context.fill();
+            canvas_context.translate(350, 20);
            
         }
     }
 }
-// function sendJSON(){ 
 let result = document.querySelector('.result'); 
-// let name = document.querySelector('#name');    
-
+// document.getElementById("Gama").innerHTML = "Magnetometer: 45555555"
 var i=0
+
 function myLoop(){
     setTimeout(function(){
         i++
