@@ -9,13 +9,15 @@
   
   <body style="text-align:center;" id="body" onload="go();"> 
     <div class="first">
-      <h1>Light Exposure Analyzer</h1><br>
+      <h1>Light Exposure Analyzer</h1>
       <!-- Camera Frame Prediction -->
       <!-- Camera view -->
       <video id="camera--view" autoplay playsinline></video>
       <!-- Camera sensor -->
       <canvas id="camera--sensor"></canvas>
     </div>
+    <div id="Gama"></div>
+    <canvas id="myCanvas"></canvas>
     <!-- For printing result from server -->
     <p class="result"></p> 
 
@@ -24,9 +26,8 @@
     <div id="Alpha"></div>
     <br/><br/>
     <div id="Beta"></div> -->
-    <br/><br/>
-    <div id="Gama"></div>
-    <canvas id="myCanvas" width="400"></canvas>
+    <!-- <br/><br/> -->
+    
 
   <!-- Include the JavaScript file -->
   <script src="index.js"></script> 
