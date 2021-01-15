@@ -15,7 +15,7 @@ body{
 }
 
 #camera--view{
-    width: 50%;
+    width: 40%;
     /* height: 20%; */
 }
 
@@ -37,6 +37,7 @@ p{
     font-weight: 200px;
     font-size: 20px;
     font-family: sans-serif;
+    transform: translateY(-80px);
 }
 
 .myCanvas{
