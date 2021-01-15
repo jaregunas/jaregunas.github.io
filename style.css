@@ -15,7 +15,7 @@ body{
 }
 
 #camera--view{
-    width: 40%;
+    width: 50%;
     /* height: 20%; */
 }
 
@@ -37,7 +37,7 @@ p{
     font-weight: 200px;
     font-size: 20px;
     font-family: sans-serif;
-    transform: translateY(-80px);
+    transform: translateY(-70px);
 }
 
 .myCanvas{
@@ -50,6 +50,6 @@ p{
 #Gama{
     font-size: 20px;
     font-family: sans-serif;
-    transform: translate(220%, 210%);
+    transform: translate(320%, 110%);
     width: 10%;
 }
