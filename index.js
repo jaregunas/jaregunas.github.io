@@ -107,7 +107,7 @@ function myLoop(){
         var data = JSON.stringify({ "image": base64}); 
         // Sending data with the request 
         xhr.send(data); 
-        if (i<8){
+        if (i<1){
             myLoop();
         }
     }, 1000)
